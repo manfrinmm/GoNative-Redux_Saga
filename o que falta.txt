@@ -1,0 +1,1 @@
+falta configurar o reactotron + redux
