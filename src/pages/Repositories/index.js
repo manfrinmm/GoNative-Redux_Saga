@@ -3,7 +3,7 @@ import { ActivityIndicator, Text } from "react-native";
 
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
-import * as RepoActions from "../../store/actions/repositoires";
+import { Creators as RepoActions } from "../../store/ducks/repositories";
 
 import { Container } from "./styles";
 
@@ -19,7 +19,7 @@ class Repositories extends Component {
     return (
       <Container>
         {repositoires.loading ? (
-          <ActivityIndicator size="small" />
+          <ActivityIndicator size="large" />
         ) : (
           repositoires.data.map(repo => <Text key={repo.id}>{repo.name}</Text>)
         )}

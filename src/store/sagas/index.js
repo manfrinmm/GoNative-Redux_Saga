@@ -3,8 +3,11 @@ import { all, takeLatest, call, put, select } from "redux-saga/effects";
 import api from "../../services/api";
 import { navigate } from "../../services/navigation";
 
-import * as LoginAction from "../actions/login";
-import * as RepoActions from "../actions/repositoires";
+import { Creators as LoginAction, Types as loginTypes } from "../ducks/login";
+import {
+  Creators as RepoActions,
+  Types as RepoTypes
+} from "../ducks/repositories";
 
 /**
  *  OBS: sempre que for usar um metodo saga, precisa
@@ -51,7 +54,7 @@ function* loadRepositories() {
 export default function* rootSaga() {
   return yield all([
     //dispara uma função quando tiver uma action
-    takeLatest("LOGIN_REQUEST", login),
-    takeLatest("LOAD_REPOSITORIES_REQUEST", loadRepositories)
+    takeLatest(loginTypes.REQUEST, login),
+    takeLatest(RepoTypes.LOAD_REQUEST, loadRepositories)
   ]);
 }

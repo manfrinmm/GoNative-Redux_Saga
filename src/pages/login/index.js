@@ -5,7 +5,7 @@ import { Container, Input, Button, ButtonText, Error } from "./styles";
 
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
-import * as loginActions from "../../store/actions/login";
+import { Creators as loginActions } from "../../store/ducks/login";
 
 class login extends Component {
   state = {
