@@ -18,6 +18,7 @@
     "reactotron-react-native": "^3.6.4",
     "reactotron-redux": "^3.1.1",
     "redux": "^4.0.4",
+    "redux-saga": "^1.0.5",
     "styled-components": "^4.3.2"
   },
   "devDependencies": {
@@ -28,7 +29,8 @@
     "eslint": "^6.1.0",
     "jest": "^24.8.0",
     "metro-react-native-babel-preset": "^0.55.0",
-    "react-test-renderer": "16.8.6"
+    "react-test-renderer": "16.8.6",
+    "reactotron-redux-saga": "^4.2.2"
   },
   "jest": {
     "preset": "react-native"

@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import api from "../../services/api";
 
 import { ActivityIndicator } from "react-native";
 import { Container, Input, Button, ButtonText, Error } from "./styles";
@@ -10,30 +9,19 @@ import * as loginActions from "../../store/actions/login";
 
 class login extends Component {
   state = {
-    username: "",
-    loading: false
+    username: ""
   };
 
   handleSubmit = async () => {
     const { username } = this.state;
-    const { loginSuccess, loginFailure, navigation } = this.props;
-    try {
-      this.setState({ loading: true });
-      await api.get(`/users/${username}`);
+    const { loginRequest, navigation } = this.props;
 
-      loginSuccess(username);
-
-      this.setState({ loading: false });
-      navigation.navigate("Repositories");
-    } catch (error) {
-      loginFailure();
-      this.setState({ loading: false });
-    }
+    loginRequest(username);
   };
 
   render() {
-    const { username, loading } = this.state;
-    const { error } = this.props;
+    const { username } = this.state;
+    const { error, loading } = this.props;
 
     return (
       <Container>
@@ -47,7 +35,7 @@ class login extends Component {
         />
         <Button onPress={this.handleSubmit}>
           {loading ? (
-            <ActivityIndicator size={30} />
+            <ActivityIndicator size={30} color="#fff" />
           ) : (
             <ButtonText>Entrar</ButtonText>
           )}
@@ -58,7 +46,8 @@ class login extends Component {
 }
 
 const mapStateToProps = state => ({
-  error: state.login.error
+  error: state.login.error,
+  loading: state.login.loading
 });
 
 const mapDispatchToProps = dispatch =>
